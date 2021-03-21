@@ -11,11 +11,13 @@ import UIKit
 
 struct Question {
     let question: String
+    let possibleAnswers: [String]
     let answer: String
     var picture: UIImage
     
-    init(q: String, a: String, p: UIImage){
+    init(q: String, pA: [String], a: String, p: UIImage){
         self.question = q.uppercased()
+        self.possibleAnswers = pA
         self.answer = a
         self.picture = p
     }

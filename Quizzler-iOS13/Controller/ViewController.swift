@@ -14,8 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var imageViewLabel: UIImageView!
     @IBOutlet weak var questionTextLabel: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var firstChoice: UIButton!
+    @IBOutlet weak var secondChoice: UIButton!
+    @IBOutlet weak var thirdChoice: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
     
     var player = AudioPlayer()
@@ -49,8 +50,12 @@ class ViewController: UIViewController {
     @objc func nextQuestion(){
         questionTextLabel.text = questionList.getQuestionText()
         imageViewLabel.image = questionList.getQuestionImage() as? UIImage
-        trueButton.backgroundColor = UIColor.clear
-        falseButton.backgroundColor = UIColor.clear
+        firstChoice.setTitle(questionList.getAnswers()[0], for: .normal)
+        secondChoice.setTitle(questionList.getAnswers()[1], for: .normal)
+        thirdChoice.setTitle(questionList.getAnswers()[2], for: .normal)
+        firstChoice.backgroundColor = UIColor.clear
+        secondChoice.backgroundColor = UIColor.clear
+        thirdChoice.backgroundColor = UIColor.clear
         progressBar.progress = questionList.getProgress()
         ScoreLabel.text = "Score: \(questionList.updateScore())"
     }
